@@ -1,0 +1,74 @@
+/*
+Original Author: Wade Eckert
+Professor: John Woods
+Course: CSD 430 - Server Side Development
+Assignment: Module 2.2 - Programming Assignment
+Date: June 21, 2026
+Description: This external CSS file styles the eckert-movie-table.jsp page.
+*/
+
+* {
+    box-sizing: border-box; /* Add the box-sizing property to all elements to include padding and border in the element's total width and height */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8; /* Light gray background */
+    color: #222; /* Dark gray text */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 85%; /* Container width set to 85% of the viewport width */
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.description {
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-wrapper {
+    overflow-x: auto; /* Enable horizontal scrolling for the table to fit within the container */
+}
+
+caption {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+th {
+    background-color: #1f3c5b; /* Dark blue background */
+    color: white; /* White text */
+    padding: 12px;
+    border: 1px solid #ccc; /* Light gray border */
+}
+
+td {
+    padding: 12px;
+    border: 1px solid #ccc; /* Light gray border */
+}
+
+tr:nth-child(even) {
+    background-color: #eef3f7; /* Light gray background for even rows */
+}
+
+tr:hover {
+    background-color: #dbe8f3; /* Light blue background on hover */
+}
