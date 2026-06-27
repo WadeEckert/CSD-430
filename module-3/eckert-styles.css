@@ -1,0 +1,300 @@
+/*
+Original Author: Wade Eckert
+Professor: John Woods
+Course: CSD 430 - Server Side Development
+Assignment: Module 3.2 - Programming Assignment
+Date: June 27, 2026
+Description: This stylesheet provides the visual design for the job application form and application
+summary pages. It creates a calm, professional layout with readable spacing, organized
+form sections, clear validation messages, accessible buttons, and a structured table
+for reviewing submitted applicant information.
+*/
+
+/*
+    Global reset and base page styling:
+    The soft blue-gray background gives the page a calm professional appearance,
+    while the font stack uses common system fonts for readability across devices.
+*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 32px 16px;
+    background-color: #f4f7fb; /* Soft blue-gray page background */
+    color: #243042; /* Dark slate text for strong readability */
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+/*
+    Main content container:
+    The white card layout keeps the form and summary content visually separated
+    from the page background.
+*/
+main {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px;
+    background-color: #ffffff; /* White background for the main content */
+    border: 1px solid #d9e2ec; /* Light, solid, blue-gray border for the main content */
+    border-radius: 14px; /* Rounded corners for the main content */
+    box-shadow: 0 8px 24px rgba(36, 48, 66, 0.08);
+}
+
+header {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0 0 8px;
+    color: #1f3a5f; /* Calm navy heading color */
+    font-size: 2rem;
+}
+
+header p {
+    margin: 0;
+    color: #5d6b7a; /* Muted text color for the header paragraph */
+}
+
+/*
+    Fieldset styling groups related form controls into clear sections.
+*/
+fieldset {
+    margin: 0 0 24px;
+    padding: 22px;
+    border: 1px solid #d5dee8; /* Light, solid, blue-gray border for the fieldset */
+    border-radius: 12px; /* Rounded corners for the fieldset */
+    background-color: #fbfdff; /* Light blue background for the fieldset */
+}
+
+legend {
+    padding: 0 8px;
+    color: #1f3a5f; /* Calm navy text color for the legend */
+    font-weight: 700; /* Bold font for the legend */
+}
+
+/*
+    Form field spacing:
+    Each label/input group is treated as one unit so error messages stay close
+    to the field they describe.
+*/
+fieldset > div {
+    margin-bottom: 18px;
+}
+
+fieldset > div:last-child {
+    margin-bottom: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #2f3f52; /* Dark text color for the label */
+    font-weight: 600; /* Bold font for the label */
+}
+
+input,
+select {
+    width: 100%;
+    max-width: 420px;
+    padding: 10px 12px;
+    border: 1px solid #b8c4d1; /* Light, solid, blue-gray border for the input and select */
+    border-radius: 8px; /* Rounded corners for the input and select */
+    background-color: #ffffff; /* White background for the input and select */
+    color: #243042; /* Dark text color for the input and select */
+    font-size: 1rem;
+}
+
+/*
+    Focus styling helps keyboard users see which field is active.
+    The blue outline is intentionally visible but not harsh.
+*/
+input:focus,
+select:focus {
+    border-color: #3b82c4; /* Blue border for the focused input and select */
+    outline: 3px solid rgba(59, 130, 196, 0.18); /* Blue outline for the focused input and select */
+}
+
+/*
+    Radio buttons should not stretch to full width like text inputs.
+*/
+input[type="radio"] {
+    width: auto;
+    max-width: none;
+    margin-right: 8px;
+}
+
+input[type="radio"] + label {
+    display: inline; /* Display the label inline with the radio button */
+    font-weight: 500; /* Slightly bold font for the radio button label */
+}
+
+/*
+    Validation message styling:
+    Red is used only for errors so validation feedback is easy to recognize.
+*/
+.error-summary {
+    margin-bottom: 24px;
+    padding: 14px 16px;
+    border-left: 5px solid #b42318; /* Deep red for validation warning */
+    border-radius: 8px;
+    background-color: #fff3f2; /* Light red background for the error summary */
+    color: #7a271a; /* Dark red text color for the error summary */
+    font-weight: 600; /* Bold font for the error summary */
+}
+
+.error-summary p {
+    margin: 0;
+}
+
+.error-message {
+    display: block; /* Display the error message as a block element */
+    margin-top: 6px;
+    color: #b42318; /* Deep red text color for the error message */
+    font-size: 0.92rem; /* Slightly smaller font size for the error message */
+    font-weight: 600; /* Bold font for the error message */
+}
+
+/*
+    Button and link-button styling:
+    The transition creates a small interactive effect without being distracting.
+*/
+button,
+.button {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 18px;
+    border: 1px solid transparent; /* Transparent border for the button */
+    border-radius: 8px;
+    background-color: #1f6fb2; /* Primary button background color */
+    color: #ffffff; /* White text color for the primary button */
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer; 
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover,
+.button:hover {
+    background-color: #195a91; /* Slightly darker background on hover */
+    transform: translateY(-1px); /* Lift the button on hover */
+}
+
+/* 
+    Secondary button styling:
+    The secondary button has a light background and a border to distinguish it from the primary button.
+*/
+.secondary-button {
+    background-color: #eef3f8; /* Light background for the secondary button */
+    border-color: #c9d6e2; /* Light border for the secondary button */
+    color: #243042; /* Dark text color for the secondary button */
+}
+
+.secondary-button:hover {
+    background-color: #dfe8f1; /* Slightly darker background on hover */
+}
+
+/*
+    Application summary table styling:
+    The table uses clear borders and spacing so submitted data is easy to review.
+*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+    overflow: hidden; /* Hide any content that overflows the table */
+    border-radius: 10px; /* Round the corners of the table */
+}
+
+caption {
+    margin-bottom: 12px;
+    color: #1f3a5f; /* Dark blue text color for the table caption */
+    font-size: 1.1rem;
+    font-weight: 700; /* Bold font for the table caption */
+    text-align: left;
+}
+
+th,
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #d9e2ec; /* Light gray border for the table rows */
+    text-align: left;
+}
+
+th {
+    background-color: #1f3a5f; /* Dark blue background for the table header */
+    color: #ffffff; /* White text color for the table header */
+}
+
+/* Styling for the first column of the table */
+td:first-child {
+    width: 35%;
+    color: #2f3f52; /* Dark gray text color for the first column */
+    font-weight: 700; /* Bold font for the first column */
+}
+
+/* Styling for even rows in the table */
+tr:nth-child(even) td {
+    background-color: #f8fbfe; /* Light background for even rows */
+}
+
+/*
+    Return link styling:
+    The return link is styled to match the primary button style, but with a different color scheme.
+*/
+main > p a {
+    display: inline-block;
+    margin-top: 22px;
+    color: #1f6fb2; /* Primary button color for the return link */
+    font-weight: 700; /* Bold font for the return link */
+    text-decoration: none;
+}
+
+main > p a:hover {
+    text-decoration: underline; /* Underline the return link on hover */
+}
+
+/*
+    Responsive styling for smaller screens:
+    The layout becomes more compact while preserving readable spacing.
+*/
+@media (max-width: 600px) {
+    body {
+        padding: 16px 10px;
+    }
+
+    main {
+        padding: 22px 16px; 
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    fieldset {
+        padding: 18px 14px;
+    }
+
+    input,
+    select {
+        max-width: 100%;
+    }
+
+    button,
+    .button {
+        width: 100%;
+        margin: 0 0 10px;
+        text-align: center;
+    }
+
+    th,
+    td {
+        padding: 12px 10px;
+        font-size: 0.95rem;
+    }
+}
