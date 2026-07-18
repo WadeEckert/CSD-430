@@ -409,6 +409,22 @@ code {
     color: var(--color-danger-dark);
 }
 
+.future-deliverable-card {
+    cursor: default; /* Disables the pointer cursor for future deliverables that are not yet available. */
+}
+
+.availability-label {
+    display: inline-block; /* Inline-block allows the label to size itself based on its content. */
+    margin-top: auto; 
+    padding: 0.40rem 0.80rem;
+    border-radius: 999px;
+    background-color: #edf4fb; /* Pale blue background for the "Coming Soon" label. */
+    color: #24507a; /* Dark blue text for strong contrast against the pale blue background. */
+    font-size: 0.80rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
 
 /* ==============================================================
    8. Project Roadmap
@@ -421,8 +437,9 @@ code {
     margin-top: 1.75rem;
 }
 
+/* Creates the vertical line connecting the roadmap markers. */
 .status-list::before {
-    position: absolute; /* Creates the vertical line connecting the roadmap markers. */
+    position: absolute; 
     top: 1.3rem;
     bottom: 1.3rem;
     left: 0.55rem;
@@ -459,8 +476,17 @@ code {
     box-shadow: 0 0 0 2px var(--color-accent);
 }
 
+.completed-status .status-marker {
+    background-color: #2f855a; /* Filled green marker indicates a completed module. */
+    border-color: #2f855a; /* Green border matches the filled marker for a completed module. */
+}
+
 .future-status .status-marker {
     background-color: var(--color-surface); /* Unfilled white markers indicate future modules. */
+}
+
+.future-status .status-label {
+    color: #7b8794; /* Muted gray text indicates a future module. */
 }
 
 .status-label {
@@ -474,6 +500,10 @@ code {
 
 .current-status .status-label {
     color: var(--color-accent-dark);
+}
+
+.completed-status .status-label {
+    color: #2f855a; /* Green text indicates a completed module. */
 }
 
 .status-item h3 {
@@ -596,7 +626,157 @@ code {
 
 
 /* ==============================================================
-   11. Site Footer
+   11. Forms and Action Buttons
+   Styles confirmation forms, grouped actions, and buttons used by
+   database-management and CRUD pages.
+   ============================================================== */
+
+.confirmation-form {
+    margin-top: 1.5rem;
+}
+
+.confirmation-panel {
+    padding: 1.5rem;
+    border: 1px solid var(--color-error-border);
+    border-radius: var(--border-radius-medium);
+    background-color: var(--color-danger-light);
+}
+
+.confirmation-panel h3 {
+    color: var(--color-danger-dark);
+}
+
+.confirmation-panel p {
+    max-width: 760px;
+    color: var(--color-text-muted);
+}
+
+.form-actions {
+    display: flex; /* Uses flexbox to arrange buttons horizontally. */
+    flex-wrap: wrap; /* Allows buttons to wrap onto multiple lines on narrow screens. */
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.button {
+    display: inline-flex; /* Uses inline-flex to allow the button to size itself based on its content. */
+    align-items: center;
+    justify-content: center;
+    min-height: 2.8rem;
+    padding: 0.7rem 1.1rem;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-small);
+    font-family: inherit; /* Inherits the body font for consistency. */
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer; /* Changes the cursor to a pointer when hovering over the button. */
+    transition: /* Smoothly animates the button's background, border, shadow, and lift during hover. */
+        background-color 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+.button:hover {
+    transform: translateY(-1px); /* Slightly lifts the button on hover. */
+}
+
+/* Provides a visible keyboard-focus indicator around the button. */
+.button:focus-visible {
+    outline: 3px solid rgba(37, 107, 156, 0.35);
+    outline-offset: 3px;
+}
+
+.danger-button {
+    border-color: var(--color-danger);
+    background-color: var(--color-danger);
+    color: #ffffff; /* White text for strong contrast against the red button background. */
+}
+
+.danger-button:hover {
+    border-color: var(--color-danger-dark);
+    background-color: var(--color-danger-dark);
+    color: #ffffff; /* Maintains white text for strong contrast against the darker red hover background. */
+    box-shadow: var(--shadow-small);
+}
+
+.secondary-button {
+    border-color: var(--color-border-strong);
+    background-color: var(--color-surface);
+    color: var(--color-primary-dark);
+}
+
+.secondary-button:hover {
+    border-color: var(--color-accent);
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    box-shadow: var(--shadow-small);
+}
+
+.record-form {
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    max-width: 620px;
+}
+
+.form-group label {
+    display: block; /* Ensures the label appears above the input field. */
+    margin-bottom: 0.35rem;
+    color: var(--color-heading);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.form-help {
+    margin-bottom: 0.65rem;
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+}
+
+/* Styles the select dropdowns used for state selection. */
+.form-group select {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 2.5rem 0.7rem 0.85rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--border-radius-small);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: inherit; /* Inherits the body font for consistency. */
+    font-size: 1rem;
+}
+
+.form-group select:hover {
+    border-color: var(--color-accent);
+}
+
+.form-group select:focus {
+    border-color: var(--color-accent);
+    outline: 3px solid rgba(37, 107, 156, 0.20); /* Provides a subtle blue focus indicator around the select field. */
+    outline-offset: 2px;
+}
+
+.primary-button {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: #ffffff; /* White text for strong contrast against the blue button background. */
+}
+
+.primary-button:hover {
+    border-color: var(--color-accent-dark);
+    background-color: var(--color-accent-dark);
+    color: #ffffff; /* Maintains white text for strong contrast against the darker blue hover background. */
+    box-shadow: var(--shadow-small);
+}
+
+
+/* ==============================================================
+   12. Site Footer
    Styles the author and academic information displayed at the
    bottom of the application.
    ============================================================== */
@@ -621,7 +801,7 @@ code {
 
 
 /* ==============================================================
-   12. Responsive Design
+   13. Responsive Design
    Adjusts grids, spacing, typography, and tables for tablets and
    smaller screens.
    ============================================================== */

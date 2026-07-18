@@ -3,11 +3,14 @@
     Professor: John Woods
     Course: CSD 430 - Server Side Development
     Assignment: CRUD Project
-    Date: July 12, 2026
+    Date: July 17, 2026
     File Name: index.jsp
-    Description: Provides the main landing page and navigation for the CSD 430 U.S. States CRUD project. This page introduces
-                 the database project, links to the current module deliverables, and presents the development roadmap for
-                 future CRUD assignments.
+    Description: Provides the main landing page and navigation for the CSD 430
+                 U.S. States CRUD project. The page introduces the project,
+                 describes the database design, provides access to permanent
+                 database-management and CRUD features, offers downloadable
+                 SQL source files, and presents the development roadmap for
+                 Modules 5 through 9.
 --%>
 
 <%@ page language="java"
@@ -19,10 +22,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="Wade Eckert">
-    <meta name="description" content="U.S. States CRUD Project developed for CSD 430 Server Side Development using JSP, JDBC, JavaBeans, and MySQL.">
-    <meta name="keywords" content="JSP, Java, JavaBeans, JDBC, MySQL, CRUD, Server Side Development, Bellevue University">
+    <meta name="description" content="A database-driven Java web application demonstrating create, read, update, and delete operations for U.S. states.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="noindex, nofollow">
 
     <title>U.S. States CRUD Project | CSD 430</title>
@@ -31,9 +33,11 @@
 </head>
 
 <body>
+
     <!-- Site Header: Introduces the course and overall CRUD project. -->
     <header class="site-header">
         <div class="header-content">
+
             <p class="course-label">
                 CSD 430 | Server Side Development
             </p>
@@ -41,122 +45,200 @@
             <h1>U.S. States CRUD Project</h1>
 
             <p class="header-description">
-                A database-driven Java web application demonstrating create, read, update, and delete operations.
+                A database-driven Java web application demonstrating create,
+                read, update, and delete operations.
             </p>
+
         </div>
     </header>
     <!-- End Site Header -->
 
-    <!-- Main Content: Contains the project overview, schema, deliverables, and roadmap. -->
+
+    <!-- Main Content: Contains the project overview, database design, application navigation, source files, and roadmap. -->
     <main class="page-container">
 
         <!-- Project Overview Section: Explains the purpose and scope of the application. -->
         <section class="content-card introduction-card">
+
             <div class="section-heading">
-                <p class="section-label">Project Overview</p>
+
+                <p class="section-label">
+                    Project Overview
+                </p>
+
                 <h2>About the Application</h2>
+
             </div>
 
-            <p>
-                This project uses MySQL, JDBC, JSP, and JavaBeans to manage information about the 50 U.S. states. The application will
-                be developed incrementally throughout Modules 5 through 9.
-            </p>
 
             <p>
-                Each state record will contain identifying, geographic, demographic, and symbolic information. Later modules will
-                add interfaces for reading, creating, updating, and deleting database records.
+                This project uses MySQL, JDBC, JSP, and JavaBeans to manage
+                information about the 50 U.S. states. The application is being
+                developed incrementally throughout Modules 5 through 9.
             </p>
+
+
+            <p>
+                Each state record contains identifying, geographic,
+                demographic, and symbolic information. The completed project
+                will provide interfaces for creating, reading, updating, and
+                deleting database records.
+            </p>
+
         </section>
         <!-- End Project Overview Section -->
 
+
         <!-- Database Design Section: Describes the fields stored in each state record. -->
         <section class="content-card">
+
             <div class="section-heading">
-                <p class="section-label">Database Design</p>
+
+                <p class="section-label">
+                    Database Design
+                </p>
+
                 <h2>State Record Fields</h2>
+
             </div>
 
-            <!-- Field Grid: Summarizes the columns planned for the states table. -->
+
+            <p>
+                Each record in the <code>wade_states_data</code> table
+                contains the following eight fields.
+            </p>
+
+
+            <!-- Field Grid: Summarizes the columns included in the states table. -->
             <div class="field-grid">
-                <article class="field-item">
-                    <h3>State ID</h3>
-                    <p>
-                        A unique numerical primary key used internally to identify each database record.
-                    </p>
-                </article>
 
                 <article class="field-item">
+
+                    <h3>State ID</h3>
+
+                    <p>
+                        A unique numerical primary key generated automatically
+                        for each database record.
+                    </p>
+
+                </article>
+
+
+                <article class="field-item">
+
                     <h3>State Name</h3>
+
                     <p>
                         The complete and unique name of the U.S. state.
                     </p>
+
                 </article>
 
+
                 <article class="field-item">
+
                     <h3>Abbreviation</h3>
+
                     <p>
                         The state's unique two-letter postal abbreviation.
                     </p>
+
                 </article>
 
+
                 <article class="field-item">
+
                     <h3>Capital</h3>
+
                     <p>
                         The official capital city of the state.
                     </p>
+
                 </article>
 
+
                 <article class="field-item">
+
                     <h3>Population</h3>
+
                     <p>
                         The state's recorded population for the selected
                         population year.
                     </p>
+
                 </article>
 
+
                 <article class="field-item">
+
                     <h3>Population Year</h3>
+
                     <p>
-                        The year associated with the recorded population value.
+                        The year associated with the recorded population
+                        value.
                     </p>
+
                 </article>
 
+
                 <article class="field-item">
+
                     <h3>State Bird</h3>
+
                     <p>
                         The bird officially designated as a state symbol.
                     </p>
+
                 </article>
 
+
                 <article class="field-item">
+
                     <h3>State Flower</h3>
+
                     <p>
                         The flower officially designated as a state symbol.
                     </p>
+
                 </article>
+
             </div>
             <!-- End Field Grid -->
+
         </section>
         <!-- End Database Design Section -->
 
-        <!-- Current Deliverables Section: Links to the Module 5.2 and 6.2 SQL files. -->
+
+        <!-- Database Management Section: Provides permanent access to the administrative JSP utilities. -->
         <section class="content-card">
+
             <div class="section-heading">
-                <p class="section-label">Modules 5.2 and 6.2</p>
-                <h2>Current Deliverables</h2>
+
+                <p class="section-label">
+                    Database Management
+                </p>
+
+                <h2>Table Setup and Maintenance</h2>
+
             </div>
 
+
             <p>
-                The following SQL scripts create, populate, and remove the <code>wade_states_data</code> table in the <code>CSD430</code> database.
+                Use these JSP utilities to create, populate, or remove the
+                <code>wade_states_data</code> table. Run Create Table and
+                Populate Table before using the CRUD application features.
             </p>
 
-            <!-- Deliverable Navigation: Provides access to the current SQL source files. -->
-            <nav class="deliverable-grid"
-                 aria-label="Modules 5.2 and 6.2 deliverables">
 
-                <a class="deliverable-card" href="module-5-6/wadeCreateTable.sql">
+            <!-- Database Utility Navigation: Links to the permanent table-management pages. -->
+            <nav class="deliverable-grid"
+                 aria-label="Database management utilities">
+
+                <a class="deliverable-card"
+                   href="module-5-6/wadeCreateTable.jsp">
+
                     <span class="deliverable-type">
-                        SQL Script
+                        JSP Utility
                     </span>
 
                     <span class="deliverable-title">
@@ -164,13 +246,18 @@
                     </span>
 
                     <span class="deliverable-description">
-                        Creates the U.S. states database table and defines its fields and constraints.
+                        Verify the <code>CSD430</code> database and create the
+                        states table when it is missing.
                     </span>
+
                 </a>
 
-                <a class="deliverable-card" href="module-5-6/wadePopulateTable.sql">
+
+                <a class="deliverable-card"
+                   href="module-5-6/wadePopulateTable.jsp">
+
                     <span class="deliverable-type">
-                        SQL Script
+                        JSP Utility
                     </span>
 
                     <span class="deliverable-title">
@@ -178,13 +265,18 @@
                     </span>
 
                     <span class="deliverable-description">
-                        Inserts complete records for all 50 U.S. states.
+                        Insert all 50 U.S. state records and display the
+                        completed database table.
                     </span>
+
                 </a>
 
-                <a class="deliverable-card danger-link" href="module-5-6/wadeDropTable.sql">
+
+                <a class="deliverable-card danger-link"
+                   href="module-5-6/wadeDropTable.jsp">
+
                     <span class="deliverable-type">
-                        SQL Script
+                        JSP Utility
                     </span>
 
                     <span class="deliverable-title">
@@ -192,37 +284,260 @@
                     </span>
 
                     <span class="deliverable-description">
-                        Removes the states table when database cleanup or recreation is required.
+                        Safely remove the states table after reviewing and
+                        submitting the confirmation form.
                     </span>
-                </a>
-            </nav>
-            <!-- End Deliverable Navigation -->
-        </section>
-        <!-- End Current Deliverables Section -->
 
-        <!-- Development Roadmap Section: Summarizes the required work for Modules 5 through 9. -->
+                </a>
+
+            </nav>
+            <!-- End Database Utility Navigation -->
+
+        </section>
+        <!-- End Database Management Section -->
+
+
+        <!-- CRUD Operations Section: Provides permanent navigation for current and future application features. -->
         <section class="content-card">
+
             <div class="section-heading">
-                <p class="section-label">Development Roadmap</p>
-                <h2>Project Deliverables by Module</h2>
+
+                <p class="section-label">
+                    CRUD Application Features
+                </p>
+
+                <h2>Manage State Records</h2>
+
             </div>
 
+
             <p>
-                The application will be expanded during each module while continuing to use the same database, 
-                table, JavaBean, shared stylesheet, and project landing page.
+                These pages provide the create, read, update, and delete
+                operations used to manage individual state records. Features
+                will become available as each project module is completed.
             </p>
 
-            <!-- Status List: Shows the current phase and future assignment requirements. -->
+
+            <!-- CRUD Feature Grid: Includes the completed Read page and informational cards for future operations. -->
+            <div class="deliverable-grid">
+
+                <article class="deliverable-card future-deliverable-card">
+
+                    <span class="deliverable-type">
+                        Create Operation
+                    </span>
+
+                    <span class="deliverable-title">
+                        Add State Record
+                    </span>
+
+                    <span class="deliverable-description">
+                        A future form will allow a user to enter all required
+                        state fields and insert a new database record.
+                    </span>
+
+                    <span class="availability-label">
+                        Planned for Module 7.2
+                    </span>
+
+                </article>
+
+
+                <a class="deliverable-card"
+                   href="module-5-6/wadeSelectState.jsp">
+
+                    <span class="deliverable-type">
+                        Read Operation
+                    </span>
+
+                    <span class="deliverable-title">
+                        Select State Record
+                    </span>
+
+                    <span class="deliverable-description">
+                        Choose a state by its database ID and display all eight
+                        fields using the State JavaBean.
+                    </span>
+
+                </a>
+
+
+                <article class="deliverable-card future-deliverable-card">
+
+                    <span class="deliverable-type">
+                        Update Operation
+                    </span>
+
+                    <span class="deliverable-title">
+                        Update State Record
+                    </span>
+
+                    <span class="deliverable-description">
+                        A future form will load an existing state and save
+                        changes while preserving its primary key.
+                    </span>
+
+                    <span class="availability-label">
+                        Planned for Module 8.2
+                    </span>
+
+                </article>
+
+
+                <article class="deliverable-card future-deliverable-card">
+
+                    <span class="deliverable-type">
+                        Delete Operation
+                    </span>
+
+                    <span class="deliverable-title">
+                        Delete State Record
+                    </span>
+
+                    <span class="deliverable-description">
+                        A future page will remove a selected state record and
+                        display the records that remain.
+                    </span>
+
+                    <span class="availability-label">
+                        Planned for Module 9.2
+                    </span>
+
+                </article>
+
+            </div>
+            <!-- End CRUD Feature Grid -->
+
+        </section>
+        <!-- End CRUD Operations Section -->
+
+
+        <!-- SQL Source Files Section: Provides permanent downloads for the original database scripts. -->
+        <section class="content-card">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    Project Source Files
+                </p>
+
+                <h2>Downloadable SQL Scripts</h2>
+
+            </div>
+
+
+            <p>
+                The original SQL source files are available for review,
+                download, and manual database execution. These scripts match
+                the database structure and data used by the JSP utilities.
+            </p>
+
+
+            <!-- SQL Download Navigation: Provides direct downloads for the three original scripts. -->
+            <nav class="deliverable-grid"
+                 aria-label="Downloadable SQL scripts">
+
+                <a class="deliverable-card"
+                   href="module-5-6/wadeCreateTable.sql"
+                   download>
+
+                    <span class="deliverable-type">
+                        SQL Download
+                    </span>
+
+                    <span class="deliverable-title">
+                        Create Table Script
+                    </span>
+
+                    <span class="deliverable-description">
+                        Downloads the SQL script that creates the database
+                        table, fields, primary key, and unique constraints.
+                    </span>
+
+                </a>
+
+
+                <a class="deliverable-card"
+                   href="module-5-6/wadePopulateTable.sql"
+                   download>
+
+                    <span class="deliverable-type">
+                        SQL Download
+                    </span>
+
+                    <span class="deliverable-title">
+                        Populate Table Script
+                    </span>
+
+                    <span class="deliverable-description">
+                        Downloads the SQL script containing the complete data
+                        set for all 50 U.S. states.
+                    </span>
+
+                </a>
+
+
+                <a class="deliverable-card danger-link"
+                   href="module-5-6/wadeDropTable.sql"
+                   download>
+
+                    <span class="deliverable-type">
+                        SQL Download
+                    </span>
+
+                    <span class="deliverable-title">
+                        Drop Table Script
+                    </span>
+
+                    <span class="deliverable-description">
+                        Downloads the SQL script used to remove the states
+                        table during cleanup or recreation.
+                    </span>
+
+                </a>
+
+            </nav>
+            <!-- End SQL Download Navigation -->
+
+        </section>
+        <!-- End SQL Source Files Section -->
+
+
+        <!-- Development Roadmap Section: Summarizes completed and future work for Modules 5 through 9. -->
+        <section class="content-card">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    Development Roadmap
+                </p>
+
+                <h2>Project Deliverables by Module</h2>
+
+            </div>
+
+
+            <p>
+                The application is expanded during each module while
+                continuing to use the same database, table, JavaBean, shared
+                stylesheet, and project landing page.
+            </p>
+
+
+            <!-- Status List: Shows completed phases and future assignment requirements. -->
             <div class="status-list">
 
-                <article class="status-item current-status">
+                <article class="status-item completed-status">
+
                     <div class="status-marker"
                          aria-hidden="true">
                     </div>
 
+
                     <div>
+
                         <p class="status-label">
-                            Current Phase
+                            Completed
                         </p>
 
                         <h3>
@@ -230,21 +545,29 @@
                         </h3>
 
                         <p>
-                            Create the <code>CSD430</code> database and the <code>wade_states_data</code> table, populate the
-                            table with all 50 U.S. states, provide a script for dropping the table, and document the completed
-                            database through screenshots.
+                            Created the <code>CSD430</code> database and
+                            <code>wade_states_data</code> table, populated it
+                            with all 50 U.S. states, provided a script for
+                            dropping the table, and documented the completed
+                            database operations.
                         </p>
+
                     </div>
+
                 </article>
 
-                <article class="status-item future-status">
+
+                <article class="status-item completed-status">
+
                     <div class="status-marker"
                          aria-hidden="true">
                     </div>
 
+
                     <div>
+
                         <p class="status-label">
-                            Upcoming
+                            Completed
                         </p>
 
                         <h3>
@@ -252,21 +575,28 @@
                         </h3>
 
                         <p>
-                            Create JSP and JDBC pages that create, populate, and delete the same database table. Use a JavaBean
-                            to retrieve the available primary-key values, display them in an HTML dropdown, and show the
-                            selected state record in an HTML table.
+                            Created JSP and JDBC utilities that create,
+                            populate, and safely remove the project table.
+                            Added a State JavaBean that retrieves primary-key
+                            options and loads a selected state record for
+                            display in an HTML table.
                         </p>
+
                     </div>
+
                 </article>
 
-                <article class="status-item future-status">
-                    <div class="status-marker"
-                         aria-hidden="true">
+
+                <article class="status-item current-status">
+
+                    <div class="status-marker" aria-hidden="true">
                     </div>
 
+
                     <div>
+
                         <p class="status-label">
-                            Upcoming
+                            Currently in Progress
                         </p>
 
                         <h3>
@@ -274,19 +604,27 @@
                         </h3>
 
                         <p>
-                            Provide an HTML or JSP form containing all fields needed to add a new record. Allow the database to
-                            generate the primary key, insert the submitted record, and display all records in an HTML table
+                            Provide an HTML or JSP form containing all fields
+                            needed to add a new record. Allow the database to
+                            generate the primary key, insert the submitted
+                            record, and display all records in an HTML table
                             after the operation is completed.
                         </p>
+
                     </div>
+
                 </article>
 
+
                 <article class="status-item future-status">
+
                     <div class="status-marker"
                          aria-hidden="true">
                     </div>
 
+
                     <div>
+
                         <p class="status-label">
                             Upcoming
                         </p>
@@ -296,19 +634,27 @@
                         </h3>
 
                         <p>
-                            Display all primary-key values in an HTML dropdown, allow the user to select a record, and load its
-                            values into an update form. Keep the primary key read-only, save the modified values, and display
-                            the updated record in an HTML table.
+                            Display all primary-key values in an HTML
+                            dropdown, allow the user to select a record, and
+                            load its values into an update form. Keep the
+                            primary key read-only, save the modified values,
+                            and display the updated record in an HTML table.
                         </p>
+
                     </div>
+
                 </article>
 
+
                 <article class="status-item future-status">
+
                     <div class="status-marker"
                          aria-hidden="true">
                     </div>
 
+
                     <div>
+
                         <p class="status-label">
                             Upcoming
                         </p>
@@ -318,22 +664,30 @@
                         </h3>
 
                         <p>
-                            Display all records in an HTML table and provide an HTML dropdown containing the remaining primary
-                            keys. Delete the selected record and redisplay the remaining records and dropdown options until the
+                            Display all records in an HTML table and provide
+                            an HTML dropdown containing the remaining primary
+                            keys. Delete the selected record and redisplay the
+                            remaining records and dropdown options until the
                             table contains no records.
                         </p>
+
                     </div>
+
                 </article>
+
             </div>
             <!-- End Status List -->
+
         </section>
         <!-- End Development Roadmap Section -->
 
     </main>
     <!-- End Main Content -->
 
+
     <!-- Site Footer: Identifies the project author and academic program. -->
     <footer class="site-footer">
+
         <p>
             Wade Eckert | Bellevue University
         </p>
@@ -341,7 +695,9 @@
         <p>
             Bachelor of Science in Software Development and Mathematics
         </p>
+
     </footer>
     <!-- End Site Footer -->
+
 </body>
 </html>
