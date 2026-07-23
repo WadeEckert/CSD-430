@@ -510,6 +510,22 @@
 
                 </a>
 
+                <a class="deliverable-card" href="../module-7/wadeCreateState.jsp">
+
+                    <span class="deliverable-type">
+                        Create Operation
+                    </span>
+
+                    <span class="deliverable-title">
+                        Create State Record
+                    </span>
+
+                    <span class="deliverable-description">
+                        Add a new state record to the database table using a
+                        form that validates each input field.
+                    </span>
+
+                </a>
 
                 <a class="deliverable-card" href="../index.jsp">
 

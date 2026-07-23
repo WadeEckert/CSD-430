@@ -321,7 +321,8 @@
             <!-- CRUD Feature Grid: Includes the completed Read page and informational cards for future operations. -->
             <div class="deliverable-grid">
 
-                <article class="deliverable-card future-deliverable-card">
+                <a class="deliverable-card"
+                   href="module-7/wadeCreateState.jsp">
 
                     <span class="deliverable-type">
                         Create Operation
@@ -332,15 +333,11 @@
                     </span>
 
                     <span class="deliverable-description">
-                        A future form will allow a user to enter all required
+                        This form allows a user to enter all required
                         state fields and insert a new database record.
                     </span>
 
-                    <span class="availability-label">
-                        Planned for Module 7.2
-                    </span>
-
-                </article>
+                </a>
 
 
                 <a class="deliverable-card"
@@ -529,8 +526,7 @@
 
                 <article class="status-item completed-status">
 
-                    <div class="status-marker"
-                         aria-hidden="true">
+                    <div class="status-marker" aria-hidden="true">
                     </div>
 
 
@@ -559,8 +555,7 @@
 
                 <article class="status-item completed-status">
 
-                    <div class="status-marker"
-                         aria-hidden="true">
+                    <div class="status-marker" aria-hidden="true">
                     </div>
 
 
@@ -587,6 +582,34 @@
                 </article>
 
 
+                <article class="status-item completed-status">
+
+                    <div class="status-marker" aria-hidden="true">
+                    </div>
+
+
+                    <div>
+
+                        <p class="status-label">
+                            Completed
+                        </p>
+
+                        <h3>
+                            Module 7.2 — Project Part 2: Create
+                        </h3>
+
+                        <p>
+                            Created an HTML form containing all fields needed to add a new
+                            record. Allowed the database to generate the primary key, inserted
+                            the submitted record, and displayed all records in an HTML table
+                            after the operation was completed.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
                 <article class="status-item current-status">
 
                     <div class="status-marker" aria-hidden="true">
@@ -597,36 +620,6 @@
 
                         <p class="status-label">
                             Currently in Progress
-                        </p>
-
-                        <h3>
-                            Module 7.2 — Project Part 2: Create
-                        </h3>
-
-                        <p>
-                            Provide an HTML or JSP form containing all fields
-                            needed to add a new record. Allow the database to
-                            generate the primary key, insert the submitted
-                            record, and display all records in an HTML table
-                            after the operation is completed.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="status-item future-status">
-
-                    <div class="status-marker"
-                         aria-hidden="true">
-                    </div>
-
-
-                    <div>
-
-                        <p class="status-label">
-                            Upcoming
                         </p>
 
                         <h3>
@@ -648,8 +641,7 @@
 
                 <article class="status-item future-status">
 
-                    <div class="status-marker"
-                         aria-hidden="true">
+                    <div class="status-marker" aria-hidden="true">
                     </div>
 
 

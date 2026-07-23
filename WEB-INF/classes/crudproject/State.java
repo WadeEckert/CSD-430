@@ -2,14 +2,14 @@
     Original Author: Wade Eckert
     Professor: John Woods
     Course: CSD 430 - Server Side Development
-    Assignment: Modules 5.3 and 6.3 - CRUD Project Part 1
-    Date: July 17, 2026
+    Assignment: Module 7 - CRUD Project Part 2
+    Date: July 22, 2026
     File Name: State.java
     Description: Defines a JavaBean that represents one record from the
-                 wade_states_data table. The bean stores the fields for a
-                 selected U.S. state and provides JDBC methods for retrieving
-                 the available primary-key values and loading one selected
-                 state record from the CSD430 database.
+                 wade_states_data table. The bean stores the fields for a U.S.
+                 state and provides JDBC methods for inserting a new record,
+                 retrieving all records, retrieving the available primary-key
+                 values, and loading one selected record from the database.
 */
 
 
@@ -27,17 +27,17 @@ package crudproject;
     Serializable allows the JavaBean's data to be converted into a form
     that Java can save, transfer, or preserve between application processes.
 
-    ArrayList and List are used to return the collection of state_id values
-    that will initialize the dropdown menu.
+    ArrayList and List are used to return collections of State objects.
 
-    Connection, PreparedStatement, ResultSet, and SQLException are JDBC
-    classes used to communicate with the MySQL database.
+    Connection, PreparedStatement, ResultSet, SQLException, and Statement
+    are JDBC classes used to communicate with the MySQL database.
 */
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,6 +83,28 @@ public class State implements Serializable {
         "population, population_year, state_bird, state_flower " +
         "FROM wade_states_data " +
         "WHERE state_id = ?";
+
+
+    /*
+        This parameterized statement inserts the seven values entered in the
+        Create State form. The state_id column is omitted because MySQL
+        generates it automatically.
+    */
+    private static final String INSERT_STATE_SQL =
+        "INSERT INTO wade_states_data (state_name, state_abbreviation, capital, " +
+        "population, population_year, state_bird, state_flower) " +
+        "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+
+    /*
+        This query retrieves every column and record for the HTML table
+        displayed after a new state is inserted.
+    */
+    private static final String SELECT_ALL_STATES_SQL =
+        "SELECT state_id, state_name, state_abbreviation, capital, " +
+        "population, population_year, state_bird, state_flower " +
+        "FROM wade_states_data " +
+        "ORDER BY state_id";
 
 
     /*
@@ -166,11 +188,8 @@ public class State implements Serializable {
      */
     public List<State> getStateOptions(Connection connection) throws SQLException {
 
-        /*
-            Create an empty list that will hold one State object for each dropdown option returned by the database.
-        */
+        //Create an empty list that will hold one State object for each dropdown option returned by the database.
         List<State> stateOptions = new ArrayList<>();
-
 
         /*
             try-with-resources automatically closes the PreparedStatement and
@@ -185,9 +204,7 @@ public class State implements Serializable {
             ResultSet resultSet = statement.executeQuery()
         ) {
 
-            /*
-                Process each row returned by the query.
-            */
+            // Process each row returned by the query.
             while (resultSet.next()) {
 
                 /*
@@ -206,9 +223,7 @@ public class State implements Serializable {
         }
 
 
-        /*
-            Return the completed collection to the JSP page.
-        */
+        // Return the completed collection to the JSP page.
         return stateOptions;
     }
 
@@ -232,9 +247,7 @@ public class State implements Serializable {
         clearState();
 
 
-        /*
-            Prepare the SQL statement containing the state_id placeholder.
-        */
+        // Prepare the SQL statement containing the state_id placeholder.
         try (PreparedStatement statement = connection.prepareStatement(SELECT_STATE_BY_ID_SQL)) {
 
             /*
@@ -245,20 +258,14 @@ public class State implements Serializable {
             statement.setInt(1, selectedStateId);
 
 
-            /*
-                Execute the query and automatically close its ResultSet after
-                the database values have been processed.
-            */
+            // Execute the query and automatically close its ResultSet after the database values have been processed.
+            
             try (ResultSet resultSet = statement.executeQuery()) {
 
-                /*
-                    A primary key can identify no more than one record, so an if statement is used rather than a while loop.
-                */
+                // A primary key can identify no more than one record, so an if statement is used rather than a while loop.
                 if (resultSet.next()) {
 
-                    /*
-                        Copy every database column into the corresponding JavaBean property.
-                    */
+                    // Copy every database column into the corresponding JavaBean property.
                     setStateId(resultSet.getInt("state_id"));
                     setStateName(resultSet.getString("state_name"));
                     setStateAbbreviation(resultSet.getString("state_abbreviation"));
@@ -268,19 +275,108 @@ public class State implements Serializable {
                     setStateBird(resultSet.getString("state_bird"));
                     setStateFlower(resultSet.getString("state_flower"));
 
-                    /*
-                        Return true so the JSP knows that it can display the selected record.
-                    */
+                    // Return true so the JSP knows that it can display the selected record.
                     return true;
                 }
             }
         }
 
 
-        /*
-            Reaching this point means that the query completed but did not find a row matching the selected state_id.
-        */
+        // Reaching this point means that the query completed but did not find a row matching the selected state_id.
         return false;
+    }
+
+
+    /*
+     * Inserts the values stored in this State bean as a new database record.
+     *
+     * A PreparedStatement safely supplies the bean's values to the SQL
+     * placeholders. MySQL generates the state_id value, and
+     * RETURN_GENERATED_KEYS makes that new ID available to the bean.
+     *
+     * @param connection an active JDBC connection to the CSD430 database
+     * @return true when exactly one record is inserted, or false otherwise
+     * @throws SQLException if the database statement cannot be completed
+     */
+    public boolean insertState(Connection connection) throws SQLException {
+
+        // Prepare the INSERT statement and request the automatically generated state_id value.
+        try (PreparedStatement statement = connection.prepareStatement(INSERT_STATE_SQL, Statement.RETURN_GENERATED_KEYS)) {
+
+            // Supply the bean's seven user-entered values in the same order as the SQL placeholders.
+            statement.setString(1, stateName);
+            statement.setString(2, stateAbbreviation);
+            statement.setString(3, capital);
+            statement.setLong(4, population);
+            statement.setInt(5, populationYear);
+            statement.setString(6, stateBird);
+            statement.setString(7, stateFlower);
+
+
+            // executeUpdate() returns the number of records affected by the INSERT statement.
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows != 1) {
+                return false;
+            }
+
+
+            // Store the state_id generated by MySQL in this bean so the JSP can identify the newly created record.
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    setStateId(generatedKeys.getInt(1));
+                }
+            }
+
+
+            return true;
+        }
+    }
+
+
+    /*
+     * Retrieves every state record for the results table.
+     *
+     * Each database row is copied into a separate State object before that
+     * object is added to the returned list.
+     *
+     * @param connection an active JDBC connection to the CSD430 database
+     * @return a list containing every state record ordered by state_id
+     * @throws SQLException if the database query cannot be completed
+     */
+    public List<State> getAllStates(Connection connection) throws SQLException {
+
+        // Create an empty list that will hold the complete collection of state records.
+        List<State> states = new ArrayList<>();
+
+
+        // Execute the query and automatically close both JDBC resources when all records have been processed.
+        try (
+            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_STATES_SQL);
+
+            ResultSet resultSet = statement.executeQuery()
+        ) {
+
+            while (resultSet.next()) {
+
+                // Create one complete State object from the current database row.
+                State state = new State(
+                    resultSet.getInt("state_id"),
+                    resultSet.getString("state_name"),
+                    resultSet.getString("state_abbreviation"),
+                    resultSet.getString("capital"),
+                    resultSet.getLong("population"),
+                    resultSet.getInt("population_year"),
+                    resultSet.getString("state_bird"),
+                    resultSet.getString("state_flower")
+                );
+
+                states.add(state);
+            }
+        }
+
+
+        return states;
     }
 
 
@@ -307,11 +403,9 @@ public class State implements Serializable {
         private properties.
 
         Their names follow the JavaBean naming convention:
-
             getPropertyName()
             setPropertyName(value)
     */
-
 
     /*
      * Returns the primary-key value for this state.

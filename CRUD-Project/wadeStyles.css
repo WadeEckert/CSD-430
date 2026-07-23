@@ -449,15 +449,15 @@ code {
 }
 
 .status-item {
-    position: relative;
-    display: grid;
+    position: relative; /* Creates the positioning context for the roadmap markers. */
+    display: grid; /* Uses CSS Grid to create a two-column layout for the roadmap markers and content. */
     grid-template-columns: 1.2rem minmax(0, 1fr); /* Creates a narrow marker column and a flexible content column. */
     gap: 1.1rem;
     padding: 0 0 2rem;
 }
 
 .status-item:last-child {
-    padding-bottom: 0;
+    padding-bottom: 0; /* Removes the bottom padding from the last roadmap item so it aligns cleanly with the bottom of the card. */
 }
 
 .status-marker {
@@ -466,14 +466,14 @@ code {
     width: 1.15rem;
     height: 1.15rem;
     margin-top: 0.35rem;
-    border: 3px solid var(--color-surface);
-    border-radius: 50%;
+    border: 3px solid var(--color-surface); /* White border creates a clear separation between the marker and the vertical roadmap line. */
+    border-radius: 50%; /* Creates a circular marker. */
     box-shadow: 0 0 0 2px var(--color-border-strong); /* Creates a second outer ring around the circular marker. */
 }
 
 .current-status .status-marker {
     background-color: var(--color-accent); /* Filled blue marker indicates the current module. */
-    box-shadow: 0 0 0 2px var(--color-accent);
+    box-shadow: 0 0 0 2px var(--color-accent); /* Blue outer ring matches the filled marker for the current module. */
 }
 
 .completed-status .status-marker {
@@ -491,7 +491,7 @@ code {
 
 .status-label {
     margin-bottom: 0.35rem;
-    color: var(--color-text-muted);
+    color: var(--color-text-muted); /* Muted gray text for the roadmap labels. */
     font-size: 0.75rem;
     font-weight: 750;
     letter-spacing: 0.1em;
@@ -499,7 +499,7 @@ code {
 }
 
 .current-status .status-label {
-    color: var(--color-accent-dark);
+    color: var(--color-accent-dark); /* Dark blue text indicates the current module. */
 }
 
 .completed-status .status-label {
@@ -511,9 +511,10 @@ code {
     font-size: 1.15rem;
 }
 
+/* Restricts the width of the roadmap description paragraphs to improve readability. */
 .status-item p:last-child {
     max-width: 900px;
-    color: var(--color-text-muted);
+    color: var(--color-text-muted); /* Muted gray text for the roadmap descriptions. */
 }
 
 
@@ -774,18 +775,109 @@ code {
     box-shadow: var(--shadow-small);
 }
 
+/* =========================================================
+   12. CREATE STATE FORM
+   These rules support the layout, validation messages, and
+   newly inserted record used by wadeCreateState.jsp.
+   ========================================================= */
+
+
+.create-form-grid {
+    display: grid; /* Uses CSS Grid to arrange the form fields in a two-column layout. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 1.5rem;
+}
+
+/* Stacks the label, input field, and validation message vertically within each form group. */
+.create-form-grid .form-group { 
+    display: flex;
+    flex-direction: column;
+}
+
+
+.required-marker {
+    color: #b42318; /* Red asterisk indicates a required field. */
+    font-weight: 700;
+}
+
+
+.required-note {
+    margin: 1rem 0 0;
+    color: #555555; /* Dark gray text for the required field note. */
+    font-size: 0.9rem;
+}
+
+
+.record-form input.invalid-field {
+    border-color: #b42318; /* Red border indicates an invalid input field. */
+    box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.12); /* Subtle red shadow emphasizes the invalid field without being too harsh. */
+}
+
+
+.record-form input.invalid-field:focus {
+    border-color: #b42318; /* Maintains the red border when the input field is focused. */
+    box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.18); /* Slightly stronger red shadow emphasizes the invalid field during focus. */
+}
+
+.create-form-grid input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--color-border-strong); /* Light gray border for the input field. */
+    border-radius: var(--border-radius-small); /* Rounded corners for a softer appearance. */
+    background-color: var(--color-surface); /* White background for the input field. */
+    color: var(--color-text); /* Dark text for strong contrast against the white background. */
+    font-family: inherit; /* Inherits the body font for consistency. */
+    font-size: 1rem;
+}
+
+.create-form-grid input:hover {
+    border-color: var(--color-accent); /* Light blue border indicates the input field is interactive. */
+}
+
+.create-form-grid input:focus {
+    border-color: var(--color-accent); /* Maintains the light blue border when the input field is focused. */
+    outline: 3px solid rgba(37, 107, 156, 0.20); /* Provides a subtle blue focus indicator around the input field. */
+    outline-offset: 2px;
+}
+
+.field-error {
+    display: block; /* Ensures the error message appears below the input field. */
+    margin-top: 0.4rem;
+    color: #b42318; /* Red text for strong contrast against the white background. */
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+.data-table tbody .new-record-row td {
+    background-color: #eaf7ee; /* Pale green background indicates a newly inserted record. */
+    font-weight: 600; /* Bold text emphasizes the new record. */
+}
+
+
+.data-table tbody .new-record-row td:first-child {
+    border-left: 4px solid #2e7d32; /* Green left border emphasizes the new record. */
+}
+
+
+.data-table tbody .new-record-row:hover td {
+    background-color: #dff2e5; /* Slightly darker green hover background for the new record. */
+}
+
 
 /* ==============================================================
-   12. Site Footer
+   13. Site Footer
    Styles the author and academic information displayed at the
    bottom of the application.
    ============================================================== */
 
 .site-footer {
     padding: 2.5rem 1.5rem;
-    border-top: 1px solid var(--color-border);
-    background-color: var(--color-surface);
-    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border); /* Separates the footer from the main content with a light gray border. */
+    background-color: var(--color-surface); /* White background for the footer. */
+    color: var(--color-text-muted); /* Muted gray text for the footer content. */
     text-align: center;
 }
 
@@ -795,13 +887,13 @@ code {
 }
 
 .site-footer p:first-child {
-    color: var(--color-primary-dark);
+    color: var(--color-primary-dark); /* Dark blue text for the first line of the footer. */
     font-weight: 700;
 }
 
 
 /* ==============================================================
-   13. Responsive Design
+   14. Responsive Design
    Adjusts grids, spacing, typography, and tables for tablets and
    smaller screens.
    ============================================================== */
@@ -855,5 +947,9 @@ code {
 
     .site-footer {
         padding: 2rem 1rem;
+    }
+
+    .create-form-grid {
+        grid-template-columns: 1fr;
     }
 }
