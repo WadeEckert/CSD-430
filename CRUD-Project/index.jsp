@@ -3,7 +3,7 @@
     Professor: John Woods
     Course: CSD 430 - Server Side Development
     Assignment: CRUD Project
-    Date: July 17, 2026
+    Date: July 29, 2026
     File Name: index.jsp
     Description: Provides the main landing page and navigation for the CSD 430
                  U.S. States CRUD project. The page introduces the project,
@@ -73,16 +73,16 @@
 
             <p>
                 This project uses MySQL, JDBC, JSP, and JavaBeans to manage
-                information about the 50 U.S. states. The application is being
-                developed incrementally throughout Modules 5 through 9.
+                information about the 50 U.S. states.
             </p>
-
 
             <p>
                 Each state record contains identifying, geographic,
-                demographic, and symbolic information. The completed project
-                will provide interfaces for creating, reading, updating, and
-                deleting database records.
+                demographic, and symbolic information. This project
+                provides interfaces for creating, reading, updating, and
+                deleting database records while also providing JSP/SQL
+                utilities for creating, populating, and dropping the <code>wade_states_data</code>
+                table.
             </p>
 
         </section>
@@ -319,10 +319,9 @@
 
 
             <!-- CRUD Feature Grid: Includes the completed Read page and informational cards for future operations. -->
-            <div class="deliverable-grid">
+            <div class="deliverable-grid crud-operation-grid">
 
-                <a class="deliverable-card"
-                   href="module-7/wadeCreateState.jsp">
+                <a class="deliverable-card crud-operation-card" href="module-7/wadeCreateState.jsp">
 
                     <span class="deliverable-type">
                         Create Operation
@@ -340,8 +339,7 @@
                 </a>
 
 
-                <a class="deliverable-card"
-                   href="module-5-6/wadeSelectState.jsp">
+                <a class="deliverable-card crud-operation-card" href="module-5-6/wadeSelectState.jsp">
 
                     <span class="deliverable-type">
                         Read Operation
@@ -359,7 +357,7 @@
                 </a>
 
 
-                <article class="deliverable-card future-deliverable-card">
+                <a class="deliverable-card crud-operation-card" href="module-8/wadeUpdateState.jsp">
 
                     <span class="deliverable-type">
                         Update Operation
@@ -370,15 +368,11 @@
                     </span>
 
                     <span class="deliverable-description">
-                        A future form will load an existing state and save
-                        changes while preserving its primary key.
+                        Select an existing state, load its current values into
+                        a form, and save changes while preserving its primary key.
                     </span>
 
-                    <span class="availability-label">
-                        Planned for Module 8.2
-                    </span>
-
-                </article>
+                </a>
 
 
                 <article class="deliverable-card future-deliverable-card">
@@ -529,7 +523,6 @@
                     <div class="status-marker" aria-hidden="true">
                     </div>
 
-
                     <div>
 
                         <p class="status-label">
@@ -557,7 +550,6 @@
 
                     <div class="status-marker" aria-hidden="true">
                     </div>
-
 
                     <div>
 
@@ -587,7 +579,6 @@
                     <div class="status-marker" aria-hidden="true">
                     </div>
 
-
                     <div>
 
                         <p class="status-label">
@@ -610,6 +601,34 @@
                 </article>
 
 
+                <article class="status-item completed-status">
+
+                    <div class="status-marker" aria-hidden="true">
+                    </div>
+
+                    <div>
+
+                        <p class="status-label">
+                            Completed
+                        </p>
+
+                        <h3>
+                            Module 8.2 — Project Part 3: Update
+                        </h3>
+
+                        <p>
+                            Added an HTML dropdown containing all primary-key
+                            values, loaded the selected record into a
+                            prepopulated update form, kept the primary key
+                            read-only, saved validated changes, and displayed
+                            the updated record in an HTML table.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
                 <article class="status-item current-status">
 
                     <div class="status-marker" aria-hidden="true">
@@ -620,35 +639,6 @@
 
                         <p class="status-label">
                             Currently in Progress
-                        </p>
-
-                        <h3>
-                            Module 8.2 — Project Part 3: Update
-                        </h3>
-
-                        <p>
-                            Display all primary-key values in an HTML
-                            dropdown, allow the user to select a record, and
-                            load its values into an update form. Keep the
-                            primary key read-only, save the modified values,
-                            and display the updated record in an HTML table.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="status-item future-status">
-
-                    <div class="status-marker" aria-hidden="true">
-                    </div>
-
-
-                    <div>
-
-                        <p class="status-label">
-                            Upcoming
                         </p>
 
                         <h3>

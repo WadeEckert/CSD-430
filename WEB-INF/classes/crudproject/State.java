@@ -2,14 +2,13 @@
     Original Author: Wade Eckert
     Professor: John Woods
     Course: CSD 430 - Server Side Development
-    Assignment: Module 7 - CRUD Project Part 2
-    Date: July 22, 2026
+    Assignment: Module 8 - CRUD Project Part 3
+    Date: July 29, 2026
     File Name: State.java
     Description: Defines a JavaBean that represents one record from the
                  wade_states_data table. The bean stores the fields for a U.S.
-                 state and provides JDBC methods for inserting a new record,
-                 retrieving all records, retrieving the available primary-key
-                 values, and loading one selected record from the database.
+                 state and provides JDBC methods for inserting, updating, and
+                 retrieving records from the database.
 */
 
 
@@ -97,6 +96,20 @@ public class State implements Serializable {
 
 
     /*
+        This parameterized statement updates the seven editable fields for one existing state record.
+
+        The state_id is used only in the WHERE clause because the table's
+        primary-key value identifies the record and cannot be changed through
+        the Update State form.
+    */
+    private static final String UPDATE_STATE_SQL =
+        "UPDATE wade_states_data " +
+        "SET state_name = ?, state_abbreviation = ?, capital = ?, " +
+        "population = ?, population_year = ?, state_bird = ?, state_flower = ? " +
+        "WHERE state_id = ?";
+
+
+    /*
         This query retrieves every column and record for the HTML table
         displayed after a new state is inserted.
     */
@@ -136,7 +149,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Creates a State bean with values for every database field.
      *
      * This constructor is not required by jsp:useBean, but it is useful when
@@ -172,7 +185,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Retrieves the state IDs and state names used by the dropdown menu.
      *
      * The JSP page opens the database connection and passes it to this
@@ -228,7 +241,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Loads one complete state record into this JavaBean.
      *
      * @param connection an active JDBC connection to the CSD430 database
@@ -287,7 +300,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Inserts the values stored in this State bean as a new database record.
      *
      * A PreparedStatement safely supplies the bean's values to the SQL
@@ -333,8 +346,46 @@ public class State implements Serializable {
         }
     }
 
+    /**
+     * Updates an existing database record using the values stored in this State bean.
+     *
+     * A PreparedStatement safely supplies the bean's seven editable values
+     * and uses stateId only to identify the record in the WHERE clause. The
+     * primary-key value is not included among the fields being changed.
+     *
+     * @param connection an active JDBC connection to the CSD430 database
+     * @return true when exactly one record is updated, or false otherwise
+     * @throws SQLException if the database statement cannot be completed
+     */
+    public boolean updateState(Connection connection) throws SQLException {
 
-    /*
+        // Prepare the UPDATE statement containing placeholders for the editable values and state ID.
+        try (PreparedStatement statement = connection.prepareStatement(UPDATE_STATE_SQL)) {
+
+            // Supply the seven editable values in the same order as the SQL placeholders.
+            statement.setString(1, stateName);
+            statement.setString(2, stateAbbreviation);
+            statement.setString(3, capital);
+            statement.setLong(4, population);
+            statement.setInt(5, populationYear);
+            statement.setString(6, stateBird);
+            statement.setString(7, stateFlower);
+
+            // Supply the state ID as the final placeholder value.
+            // This value identifies the record in the WHERE clause but does not change the record's primary key.
+            statement.setInt(8, stateId);
+
+
+            // executeUpdate() returns the number of database records affected by the UPDATE statement.
+            int affectedRows = statement.executeUpdate();
+
+            // A successful update must affect exactly one record because state_id is the table's primary key.
+            return affectedRows == 1;
+        }
+    }
+
+
+    /**
      * Retrieves every state record for the results table.
      *
      * Each database row is copied into a separate State object before that
@@ -399,15 +450,14 @@ public class State implements Serializable {
 
 
     /*
-        Getter and setter methods provide controlled access to the bean's
-        private properties.
+        Getter and setter methods provide controlled access to the bean's private properties.
 
         Their names follow the JavaBean naming convention:
             getPropertyName()
             setPropertyName(value)
     */
 
-    /*
+    /**
      * Returns the primary-key value for this state.
      *
      * @return the state ID
@@ -417,7 +467,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Assigns the primary-key value for this state.
      *
      * @param stateId the state ID to store
@@ -427,7 +477,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Returns the full state name.
      *
      * @return the state name
@@ -437,7 +487,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Assigns the full state name.
      *
      * @param stateName the state name to store
@@ -447,7 +497,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Returns the two-letter state abbreviation.
      *
      * @return the state abbreviation
@@ -457,7 +507,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Assigns the two-letter state abbreviation.
      *
      * @param stateAbbreviation the abbreviation to store
@@ -467,7 +517,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Returns the state capital.
      *
      * @return the capital
@@ -477,7 +527,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Assigns the state capital.
      *
      * @param capital the capital to store
@@ -487,7 +537,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Returns the state's population estimate.
      *
      * A long is used because the database column is a BIGINT and state
@@ -500,7 +550,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Assigns the state's population estimate.
      *
      * @param population the population to store
@@ -510,7 +560,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Returns the year associated with the population estimate.
      *
      * @return the population year
@@ -520,7 +570,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Assigns the year associated with the population estimate.
      *
      * @param populationYear the population year to store
@@ -530,7 +580,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Returns the official state bird.
      *
      * @return the state bird
@@ -540,7 +590,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Assigns the official state bird.
      *
      * @param stateBird the state bird to store
@@ -550,7 +600,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Returns the official state flower.
      *
      * @return the state flower
@@ -560,7 +610,7 @@ public class State implements Serializable {
     }
 
 
-    /*
+    /**
      * Assigns the official state flower.
      *
      * @param stateFlower the state flower to store

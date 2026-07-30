@@ -3,7 +3,7 @@
     Professor: John Woods
     Course: CSD 430 - Server Side Development
     Assignment: CRUD Project
-    Date: July 12, 2026
+    Date: July 29, 2026
     File Name: wadeStyles.css
     Description: Provides the shared visual design for the CSD 430 U.S. States CRUD project. The stylesheet defines the
                  layout, typography, project cards, deliverable links, roadmap components, database tables, status messages,
@@ -342,6 +342,16 @@ code {
     margin-top: 1.5rem;
 }
 
+/* Displays the eight Next Actions cards in two rows of four cards on desktop screens. */
+.deliverable-grid.next-actions-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Displays the four CRUD operation cards in one equal-width row on desktop screens. */
+.deliverable-grid.crud-operation-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* Creates one column for each CRUD operation. */
+}
+
 .deliverable-card {
     display: flex; /* Flexbox stacks the deliverable type, title, and description vertically. */
     flex-direction: column;
@@ -392,6 +402,55 @@ code {
     color: var(--color-text-muted);
     font-size: 0.94rem;
     line-height: 1.55;
+}
+
+/* Gives project-home navigation cards a pale lavender appearance that distinguishes them from utility links. */
+.project-home-card {
+    border-color: #c8b5dc; /* Soft purple border surrounding the navigation card. */
+    background-color: #f2ecf8; /* Pale lavender background used only for links returning to the project home page. */
+}
+
+
+/* Strengthens the lavender colors and lifts the card slightly when the user points to it. */
+.project-home-card:hover {
+    border-color: #8663a8; /* Darker purple border provides visible hover feedback. */
+    background-color: #e8ddf2; /* Slightly darker lavender hover background. */
+}
+
+
+/* Uses dark purple text to coordinate the label and title with the card's background. */
+.project-home-card .deliverable-type,
+.project-home-card .deliverable-title {
+    color: #5f3f7f; 
+}
+
+
+/* Provides a purple keyboard-focus outline that matches the project-home card. */
+.project-home-card:focus-visible {
+    outline-color: rgba(95, 63, 127, 0.35);
+}
+
+/* Gives CRUD operation cards a pale teal appearance that distinguishes them from JSP utility links. */
+.deliverable-card.crud-operation-card {
+    border-color: #afd4cd;
+    background-color: #edf8f6;
+}
+
+/* Strengthens the teal colors and lifts an active CRUD link when the user points to it. */
+a.deliverable-card.crud-operation-card:hover {
+    border-color: #57998e;
+    background-color: #dff1ed;
+}
+
+/* Coordinates the CRUD operation label and title with the teal card colors. */
+.crud-operation-card .deliverable-type,
+.crud-operation-card .deliverable-title {
+    color: #286b62;
+}
+
+/* Provides a matching keyboard-focus outline for CRUD navigation links. */
+a.deliverable-card.crud-operation-card:focus-visible {
+    outline-color: rgba(40, 107, 98, 0.35);
 }
 
 .danger-link {
@@ -867,8 +926,56 @@ code {
 }
 
 
+/* =========================================================
+   13. UPDATE STATE FORM
+   These rules visually distinguish the read-only primary-key
+   field and updated record used by wadeUpdateState.jsp.
+   ========================================================= */
+
+
+/* Gives the read-only State ID field a subdued appearance to show that its value cannot be edited. */
+.create-form-grid input.readonly-field {
+    border-color: var(--color-border);
+    background-color: var(--color-surface-muted);
+    color: var(--color-text-muted);
+    cursor: not-allowed; /* Indicates that the primary-key value cannot be changed. */
+}
+
+
+/* Prevents the read-only field from receiving the blue hover border used by editable form fields. */
+.create-form-grid input.readonly-field:hover {
+    border-color: var(--color-border);
+}
+
+
+/* Maintains a visible keyboard-focus indicator while preserving the field's read-only appearance. */
+.create-form-grid input.readonly-field:focus {
+    border-color: var(--color-border-strong);
+    outline-color: rgba(95, 111, 125, 0.20);
+}
+
+
+/* Applies a pale green background to the record confirmed by a successful update. */
+.data-table tbody .updated-record-row td {
+    background-color: var(--color-success-background);
+    font-weight: 600;
+}
+
+
+/* Adds a green left border to make the successfully updated record easy to identify. */
+.data-table tbody .updated-record-row td:first-child {
+    border-left: 4px solid var(--color-success);
+}
+
+
+/* Slightly darkens the highlighted record when the user moves the pointer over it. */
+.data-table tbody .updated-record-row:hover td {
+    background-color: #dff2e5;
+}
+
+
 /* ==============================================================
-   13. Site Footer
+   14. Site Footer
    Styles the author and academic information displayed at the
    bottom of the application.
    ============================================================== */
@@ -893,7 +1000,7 @@ code {
 
 
 /* ==============================================================
-   14. Responsive Design
+   15. Responsive Design
    Adjusts grids, spacing, typography, and tables for tablets and
    smaller screens.
    ============================================================== */
@@ -911,6 +1018,16 @@ code {
 
     .deliverable-card {
         min-height: auto;
+    }
+
+    /* Displays the CRUD cards in two columns when four columns would become too narrow. */
+    .deliverable-grid.crud-operation-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Displays Next Actions cards in two columns on tablet-sized screens. */
+    .deliverable-grid.next-actions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -933,6 +1050,16 @@ code {
 
     .field-grid {
         grid-template-columns: 1fr; /* Reduces the field grid to one column on narrow screens. */
+    }
+
+    /* Stacks the CRUD operation cards vertically on narrow mobile screens. */
+    .deliverable-grid.crud-operation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stacks Next Actions cards vertically on narrow mobile screens. */
+    .deliverable-grid.next-actions-grid {
+        grid-template-columns: 1fr;
     }
 
     .status-item {

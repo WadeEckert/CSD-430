@@ -482,67 +482,94 @@
             </div>
 
 
-            <div class="deliverable-grid">
+            <div class="deliverable-grid next-actions-grid">
+
+                <a class="deliverable-card" href="wadeCreateTable.jsp">
+
+                    <span class="deliverable-type">JSP Utility</span>
+                    <span class="deliverable-title">Create Table</span>
+                    <span class="deliverable-description">
+                        Create the wade_states_data table in the CSD430 database.
+                    </span>
+
+                </a>
+
 
                 <a class="deliverable-card" href="wadePopulateTable.jsp">
-                    <span class="deliverable-type">
-                        JSP Utility
-                    </span>
 
-                    <span class="deliverable-title">
-                        Populate Table
-                    </span>
-
+                    <span class="deliverable-type">JSP Utility</span>
+                    <span class="deliverable-title">Populate Table</span>
                     <span class="deliverable-description">
-                        Insert the records for all 50 U.S. states and display
-                        the completed database table.
+                        Insert the state records and display the populated table.
                     </span>
+
                 </a>
+
 
                 <a class="deliverable-card danger-link" href="wadeDropTable.jsp">
-                    <span class="deliverable-type">
-                        JSP Utility
-                    </span>
 
-                    <span class="deliverable-title">
-                        Drop Table
-                    </span>
-
+                    <span class="deliverable-type">JSP Utility</span>
+                    <span class="deliverable-title">Drop Table</span>
                     <span class="deliverable-description">
-                        Safely remove the states table after reviewing and submitting
-                        the confirmation form.
+                        Remove the state table after confirming the destructive action.
                     </span>
+
                 </a>
 
-                <a class="deliverable-card" href="wadeSelectState.jsp">
-                    <span class="deliverable-type">
-                        Read Operation
-                    </span>
 
-                    <span class="deliverable-title">
-                        Select State Record
-                    </span>
+                <a class="deliverable-card project-home-card" href="../index.jsp">
 
+                    <span class="deliverable-type">Project Navigation</span>
+                    <span class="deliverable-title">Return to Project Home</span>
                     <span class="deliverable-description">
-                        Choose a state by its database ID and display the complete record
-                        using the State JavaBean.
+                        Return to the project overview, utilities, and development roadmap.
                     </span>
+
                 </a>
 
-                <a class="deliverable-card" href="../index.jsp">
-                    <span class="deliverable-type">
-                        Project Navigation
-                    </span>
 
-                    <span class="deliverable-title">
-                        Return to Project Home
-                    </span>
+                <a class="deliverable-card crud-operation-card" href="wadeSelectState.jsp">
 
+                    <span class="deliverable-type">Read Operation</span>
+                    <span class="deliverable-title">Select State Record</span>
                     <span class="deliverable-description">
-                        Return to the main CRUD project page and review the
-                        available database utilities and deliverables.
+                        Select a state and display its complete database record.
                     </span>
+
                 </a>
+
+
+                <a class="deliverable-card crud-operation-card" href="../module-7/wadeCreateState.jsp">
+
+                    <span class="deliverable-type">Create Operation</span>
+                    <span class="deliverable-title">Create State Record</span>
+                    <span class="deliverable-description">
+                        Validate and insert a new state record into the database.
+                    </span>
+
+                </a>
+
+
+                <a class="deliverable-card crud-operation-card" href="../module-8/wadeUpdateState.jsp">
+
+                    <span class="deliverable-type">Update Operation</span>
+                    <span class="deliverable-title">Update State Record</span>
+                    <span class="deliverable-description">
+                        Select an existing state and save validated changes.
+                    </span>
+
+                </a>
+
+
+                <article class="deliverable-card crud-operation-card planned-card">
+
+                    <span class="deliverable-type">Delete Operation</span>
+                    <span class="deliverable-title">Delete State Record</span>
+                    <span class="deliverable-description">
+                        Planned for Module 9.2.
+                    </span>
+
+                </article>
 
             </div>
 
