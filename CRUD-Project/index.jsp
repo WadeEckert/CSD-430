@@ -312,9 +312,9 @@
 
 
             <p>
-                These pages provide the create, read, update, and delete
-                operations used to manage individual state records. Features
-                will become available as each project module is completed.
+                These pages provide the completed create, read, update, 
+                and delete operations used to manage individual state records 
+                in the database.
             </p>
 
 
@@ -375,26 +375,20 @@
                 </a>
 
 
-                <article class="deliverable-card future-deliverable-card">
+                <a class="deliverable-card crud-operation-card" href="module-9/wadeDeleteState.jsp">
 
-                    <span class="deliverable-type">
-                        Delete Operation
-                    </span>
+                    <span class="deliverable-type">Delete Operation</span>
 
                     <span class="deliverable-title">
                         Delete State Record
                     </span>
 
                     <span class="deliverable-description">
-                        A future page will remove a selected state record and
-                        display the records that remain.
+                        Select an existing state, remove its record from the database, 
+                        and display the records that remain.
                     </span>
 
-                    <span class="availability-label">
-                        Planned for Module 9.2
-                    </span>
-
-                </article>
+                </a>
 
             </div>
             <!-- End CRUD Feature Grid -->
@@ -530,7 +524,7 @@
                         </p>
 
                         <h3>
-                            Modules 5.2 and 6.2 — Database Setup
+                            Modules 5.2 and 6.2 &mdash; Database Setup
                         </h3>
 
                         <p>
@@ -558,7 +552,7 @@
                         </p>
 
                         <h3>
-                            Modules 5.3 and 6.3 — Project Part 1: Read
+                            Modules 5.3 and 6.3 &mdash; Project Part 1: Read
                         </h3>
 
                         <p>
@@ -586,7 +580,7 @@
                         </p>
 
                         <h3>
-                            Module 7.2 — Project Part 2: Create
+                            Module 7.2 &mdash; Project Part 2: Create
                         </h3>
 
                         <p>
@@ -613,7 +607,7 @@
                         </p>
 
                         <h3>
-                            Module 8.2 — Project Part 3: Update
+                            Module 8.2 &mdash; Project Part 3: Update
                         </h3>
 
                         <p>
@@ -629,33 +623,32 @@
                 </article>
 
 
-                <article class="status-item current-status">
+                <article class="status-item completed-status">
 
                     <div class="status-marker" aria-hidden="true">
                     </div>
 
-
-                    <div>
+                    <div class="status-content">
 
                         <p class="status-label">
-                            Currently in Progress
+                            Completed
                         </p>
 
                         <h3>
-                            Module 9.2 — Project Part 4: Delete
+                            Module 9.2 &mdash; Project Part 4: Delete
                         </h3>
 
                         <p>
-                            Display all records in an HTML table and provide
-                            an HTML dropdown containing the remaining primary
-                            keys. Delete the selected record and redisplay the
-                            remaining records and dropdown options until the
-                            table contains no records.
+                            Created a JSP page that displays all database records 
+                            and allows a user to select an existing state by its primary key. 
+                            The page deletes the selected record through the State JavaBean and 
+                            refreshes the dropdown and table to show the records that remain.
                         </p>
 
                     </div>
 
                 </article>
+
 
             </div>
             <!-- End Status List -->

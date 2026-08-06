@@ -501,23 +501,23 @@
                 </a>
 
 
-                <a class="deliverable-card crud-operation-card" href="wadeSelectState.jsp">
-
-                    <span class="deliverable-type">Read Operation</span>
-                    <span class="deliverable-title">Select State Record</span>
-                    <span class="deliverable-description">
-                        Select a state and display its complete database record.
-                    </span>
-
-                </a>
-
-
                 <a class="deliverable-card crud-operation-card" href="../module-7/wadeCreateState.jsp">
 
                     <span class="deliverable-type">Create Operation</span>
                     <span class="deliverable-title">Create State Record</span>
                     <span class="deliverable-description">
                         Validate and insert a new state record into the database.
+                    </span>
+
+                </a>
+
+
+                <a class="deliverable-card crud-operation-card" href="wadeSelectState.jsp">
+
+                    <span class="deliverable-type">Read Operation</span>
+                    <span class="deliverable-title">Select State Record</span>
+                    <span class="deliverable-description">
+                        Select a state and display its complete database record.
                     </span>
 
                 </a>
@@ -534,15 +534,15 @@
                 </a>
 
 
-                <article class="deliverable-card crud-operation-card planned-card">
+                <a class="deliverable-card crud-operation-card" href="../module-9/wadeDeleteState.jsp">
 
                     <span class="deliverable-type">Delete Operation</span>
                     <span class="deliverable-title">Delete State Record</span>
                     <span class="deliverable-description">
-                        Planned for Module 9.2.
+                        Select an existing state and remove it from the database.
                     </span>
 
-                </article>
+                </a>
 
             </div>
 

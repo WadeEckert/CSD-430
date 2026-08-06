@@ -2,13 +2,13 @@
     Original Author: Wade Eckert
     Professor: John Woods
     Course: CSD 430 - Server Side Development
-    Assignment: Module 8 - CRUD Project Part 3
-    Date: July 29, 2026
+    Assignment: Module 9 - CRUD Project Part 4
+    Date: August 5, 2026
     File Name: State.java
     Description: Defines a JavaBean that represents one record from the
                  wade_states_data table. The bean stores the fields for a U.S.
-                 state and provides JDBC methods for inserting, updating, and
-                 retrieving records from the database.
+                 state and provides JDBC methods for inserting, updating,
+                 deleting, and retrieving records from the database.
 */
 
 
@@ -110,8 +110,20 @@ public class State implements Serializable {
 
 
     /*
+        This parameterized statement deletes one existing state record.
+
+        The WHERE clause limits the operation to the state_id stored in this
+        bean. Without the WHERE clause, every record in the table would be deleted.
+    */
+    private static final String DELETE_STATE_SQL =
+        "DELETE FROM wade_states_data " +
+        "WHERE state_id = ?";
+
+
+    /*
         This query retrieves every column and record for the HTML table
-        displayed after a new state is inserted.
+        displayed after a new state is inserted or an existing state is
+        deleted.
     */
     private static final String SELECT_ALL_STATES_SQL =
         "SELECT state_id, state_name, state_abbreviation, capital, " +
@@ -380,6 +392,34 @@ public class State implements Serializable {
             int affectedRows = statement.executeUpdate();
 
             // A successful update must affect exactly one record because state_id is the table's primary key.
+            return affectedRows == 1;
+        }
+    }
+
+
+    /**
+     * Deletes the database record identified by this State bean's stateId.
+     *
+     * A PreparedStatement safely supplies the stateId to the DELETE
+     * statement's placeholder. The WHERE clause ensures that only the
+     * selected record can be removed.
+     *
+     * @param connection an active JDBC connection to the CSD430 database
+     * @return true when exactly one record is deleted, or false otherwise
+     * @throws SQLException if the database statement cannot be completed
+     */
+    public boolean deleteState(Connection connection) throws SQLException {
+
+        // Prepare the DELETE statement containing the placeholder for the selected state ID.
+        try (PreparedStatement statement = connection.prepareStatement(DELETE_STATE_SQL)) {
+
+            // Supply the bean's state ID as the value used by the WHERE clause.
+            statement.setInt(1, stateId);
+
+            // executeUpdate() returns the number of database records affected by the DELETE statement.
+            int affectedRows = statement.executeUpdate();
+
+            // A successful deletion must affect exactly one record because state_id is the table's primary key.
             return affectedRows == 1;
         }
     }
