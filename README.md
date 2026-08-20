@@ -332,6 +332,6 @@ The course provided practical experience connecting Java programming, relational
 
 ## Author
 
-**Wade Eckert**
-Bellevue University
+**Wade Eckert**  
+Bellevue University  
 Bachelor of Science in Software Development and Mathematics
